@@ -1,0 +1,29 @@
+
+public class Penjualan {
+	private String namaMakanan;
+	private int totalHarga;
+	private int Jumlah;
+	private int sisaStok;
+	
+	public Penjualan(String namaMakanan, int totalHarga, int sisaStok) {
+		this.namaMakanan = namaMakanan;
+		this.totalHarga = totalHarga;
+		this.sisaStok = sisaStok;
+	}
+	
+	public String getnamaMakanan() {
+		return namaMakanan;
+	}
+	
+	public int gettotalHarga() {
+		return totalHarga;
+	}
+	
+	public int getJumlah() {
+		return Jumlah;
+	}
+	
+	public int getsisaStok() {
+		return sisaStok;
+	}
+}

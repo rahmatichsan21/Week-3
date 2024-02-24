@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class Soal1 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Membaca input string
+        String s = scanner.nextLine();
+
+        // Menghitung jumlah token
+        int tokenCount = countTokens(s);
+
+        // Menampilkan jumlah token
+        System.out.println(tokenCount);
+
+        // Memecah string menjadi token dan menampilkannya
+        String[] tokens = s.split("[^a-zA-Z]+");
+        for (String token : tokens) {
+            System.out.println(token);
+        }
+
+        scanner.close();
+    }
+
+    private static int countTokens(String s) {
+        // Menghitung jumlah token dengan menggunakan regex
+        return s.split("[^a-zA-Z]+").length;
+    }
+}

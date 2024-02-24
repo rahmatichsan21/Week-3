@@ -1,0 +1,55 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Restaurant{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Daftar menu makanan
+        List<Produk> menu = new ArrayList<>();
+        menu.add(new Produk("Nasi Goreng", 15000));
+        menu.add(new Produk("Mie Goreng", 12000));
+        menu.add(new Produk("Ayam Goreng", 20000));
+        // Tambahkan menu lainnya
+
+        // Pesanan
+        List<Penjualan> pesanan = new ArrayList<>();
+
+        // Memilih menu
+        boolean pesanLagi = true;
+        while (pesanLagi) {
+            System.out.println("Menu Makanan:");
+            for (int i = 0; i < menu.size(); i++) {
+                System.out.println((i + 1) + ". " + menu.get(i).getNamaProduk() + " - Rp" + menu.get(i).getHarga());
+            }
+
+            System.out.print("Pilih menu (nomor): ");
+            int pilihan = scanner.nextInt();
+            scanner.nextLine(); // Membersihkan newline
+
+            System.out.print("Jumlah yang dipesan: ");
+            int qty = scanner.nextInt();
+            scanner.nextLine(); // Membersihkan newline
+
+            Produk produkDipesan = menu.get(pilihan - 1);
+            produkDipesan.tambahQty(qty);
+            pesanan.add(new Penjualan(produkDipesan.getNamaProduk(), qty, produkDipesan.getTotalHarga()));
+
+            System.out.print("Pesan lagi? (y/n): ");
+            String jawab = scanner.nextLine();
+            pesanLagi = jawab.equalsIgnoreCase("y");
+        }
+
+        // Menampilkan pesanan
+        System.out.println("Pesanan:");
+        int totalBayar = 0;
+        for (Penjualan item : pesanan) {
+            System.out.println(item.getNamaProduk() + " - " + item.getQuantity() + " x Rp" + item.getHargaTotal());
+            totalBayar += item.getHargaTotal();
+        }
+        System.out.println("Total Bayar: Rp" + totalBayar);
+
+        scanner.close();
+    }
+}

@@ -1,0 +1,6 @@
+INDEX VERSION 1.131+C:\Users\lenovo\OneDrive\Kuliah\Tekpro\Praktek\Week 3\.metadata\.plugins\org.eclipse.jdt.core
+1950421680.index
+3980935946.index
+1865797976.index
+2397462723.index
+2158442071.index

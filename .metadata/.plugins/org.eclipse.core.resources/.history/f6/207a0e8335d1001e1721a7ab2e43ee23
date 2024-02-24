@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class Restaurant {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Daftar menu makanan
+        String[] menu = {"Nasi Goreng", "Mie Goreng", "Ayam Goreng"};
+        int[] hargaMenu = {15000, 12000, 20000};
+        int[] qty = new int[menu.length];
+
+        // Memilih menu
+        boolean pesanLagi = true;
+        while (pesanLagi) {
+            System.out.println("Menu Makanan:");
+            for (int i = 0; i < menu.length; i++) {
+                System.out.println((i + 1) + ". " + menu[i] + " - Rp" + hargaMenu[i]);
+            }
+
+            System.out.print("Pilih menu (nomor): ");
+            int pilihan = scanner.nextInt() - 1;
+            scanner.nextLine(); // Membersihkan newline
+
+            System.out.print("Jumlah yang dipesan: ");
+            qty[pilihan] += scanner.nextInt();
+            scanner.nextLine(); // Membersihkan newline
+
+            System.out.print("Pesan lagi? (y/n): ");
+            String jawab = scanner.nextLine();
+            pesanLagi = jawab.equalsIgnoreCase("y");
+        }
+
+        // Menampilkan pesanan
+        System.out.println("Pesanan:");
+        int totalBayar = 0;
+        for (int i = 0; i < menu.length; i++) {
+            if (qty[i] > 0) {
+                int harga = hargaMenu[i] * qty[i];
+                System.out.println(menu[i] + " - " + qty[i] + " x Rp" + harga);
+                totalBayar += harga;
+            }
+        }
+        System.out.println("Total Bayar: Rp" + totalBayar);
+
+        scanner.close();
+    }
+}
